@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Header, Button, Spinner, Layer } from "grommet";
+import { Box, Heading, Button, Spinner, Layer } from "grommet";
 import GameBoard from "./GameBoard";
 
 const Model = ({ modelNumber }) => {
@@ -106,7 +106,7 @@ const Model = ({ modelNumber }) => {
           onClickOutside={() => setShowResponse(false)}
         >
           <Box width="medium" height="250px" pad="small">
-            <Header>{response}</Header>
+            <Heading>{response}</Heading>
             <Box width="xsmall">
               <Button label="Close" onClick={() => setShowResponse(false)} />
             </Box>
