@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Heading, Button, Spinner, Layer } from "grommet";
+import { Box, Text, Button, Spinner, Layer } from "grommet";
 import GameBoard from "./GameBoard";
 
 const Model = ({ modelNumber }) => {
@@ -31,51 +31,57 @@ const Model = ({ modelNumber }) => {
   };
 
   const handleSubmit = () => {
-    setLoading(true);
-    let request = new XMLHttpRequest();
-    const path = process.env.REACT_APP_ENDPOINT;
-    const args =
-      boardState.tl +
-      boardState.tm +
-      boardState.tr +
-      boardState.ml +
-      boardState.mm +
-      boardState.mr +
-      boardState.bl +
-      boardState.bm +
-      boardState.br +
-      "/";
+    // setLoading(true);
+    // let request = new XMLHttpRequest();
+    // const path = process.env.REACT_APP_ENDPOINT;
+    // const args =
+    //   boardState.tl +
+    //   boardState.tm +
+    //   boardState.tr +
+    //   boardState.ml +
+    //   boardState.mm +
+    //   boardState.mr +
+    //   boardState.bl +
+    //   boardState.bm +
+    //   boardState.br +
+    //   "/";
 
-    request.onerror = function () {
-      setResponse("An error has occurred");
-      setLoading(false);
-      setShowResponse(true);
-    };
-    request.ontimeout = function () {
-      setResponse("The request has timed out");
-      setLoading(false);
-      setShowResponse(true);
-    };
-    request.onload = function () {
-      if (request.status === 200) {
-        if (request.response.status === 200) {
-          setResponse("The winner is: " + request.response.message);
-          setShowResponse(true);
-        } else {
-          setResponse("An error has occurred");
-          setShowResponse(true);
-        }
-      } else {
-        setResponse("An error has occurred");
-        setShowResponse(true);
-      }
-      setLoading(false);
-    };
+    // request.onerror = function () {
+    //   setResponse("An error has occurred");
+    //   setLoading(false);
+    //   setShowResponse(true);
+    // };
+    // request.ontimeout = function () {
+    //   setResponse("The request has timed out");
+    //   setLoading(false);
+    //   setShowResponse(true);
+    // };
+    // request.onload = function () {
+    //   if (request.status === 200) {
+    //     if (request.response.status === 200) {
+    //       setResponse("The winner is: " + request.response.message);
+    //       setShowResponse(true);
+    //     } else {
+    //       setResponse("An error has occurred");
+    //       setShowResponse(true);
+    //     }
+    //   } else {
+    //     setResponse("An error has occurred");
+    //     setShowResponse(true);
+    //   }
+    //   setLoading(false);
+    // };
 
-    request.timeout = 10000;
-    request.responseType = "json";
-    request.open("GET", path + args + modelNumber);
-    request.send();
+    // request.timeout = 10000;
+    // request.responseType = "json";
+    // request.open("GET", path + args + modelNumber);
+    // request.send();
+
+    setResponse(
+      `Unfortunately this functionality was broken by a recent update to AWS API Gateway.
+      I am working to fix it at the moment, so please check back later.`
+    );
+    setShowResponse(true);
   };
 
   return (
@@ -105,7 +111,7 @@ const Model = ({ modelNumber }) => {
           onClickOutside={() => setShowResponse(false)}
         >
           <Box width="medium" height="250px" pad="small">
-            <Heading>{response}</Heading>
+            <Text>{response}</Text>
             <Box width="xsmall">
               <Button label="Close" onClick={() => setShowResponse(false)} />
             </Box>
