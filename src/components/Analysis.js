@@ -59,7 +59,7 @@ const Analysis = ({ modelNumber }) => {
   return (
     <Box pad="medium">
       <Box
-        width="large"
+        width="600px"
         height={{ min: "400px" }}
         align="center"
         justify="center"
