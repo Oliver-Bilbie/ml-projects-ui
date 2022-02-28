@@ -30,7 +30,9 @@ I would have preferred to use AWS Lambda for this service, however due to the li
 The source code for the flask application is available from my
 `
 
-const body5 = `along with the source code for this webpage.`
+const body5 = `
+along with the source code for this webpage.
+`
 
 
 const Welcome = ({setShowWelcome}) => {
