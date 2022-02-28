@@ -39,6 +39,7 @@ const Performance = ({ modelNumber }) => {
           />
           <Box width="124.86px"></Box>
         </Box>
+        <Box height="xxsmall" />
       </Box>
     </Box>
   );

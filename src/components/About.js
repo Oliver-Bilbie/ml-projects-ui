@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Markdown } from "grommet";
 
 const AboutModelOne = `
-Model 1 uses a one-hot encoded board state to predict the outcome of the game. This approach avoids implying an order to the players (ie: x > 0) which would not be appropriate in this case. The downside to this method is that the nine squares of the game board combined with the three possible states of each square gives a total of 27 features, which may add unncessary complexity to the model itself.
+Model 1 uses a one-hot encoded board state to predict the outcome of the game. This approach avoids implying an order to the players (ie: X > 0) which would not be appropriate in this case. The downside to this method is that the nine squares of the game board combined with the three possible states of each square gives a total of 27 features, which may add unncessary complexity to the model itself.
 `;
 
 const AboutModelTwo = `
@@ -80,7 +80,7 @@ const About = ({ modelNumber }) => {
   return (
     <Box pad="medium">
       <Box
-        width="large"
+        width="600px"
         height="600px"
         align="center"
         justify="center"

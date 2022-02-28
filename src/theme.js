@@ -3,7 +3,7 @@ const Theme = {
     colors: {
       brand: "#67bdd7",
       background: "#dce1e1",
-      "background-front": "#C1C4CB",
+      "background-front": "#c1ccd0",
       text: "#1B1B1B",
       "text-strong": "#E6E6E6",
     },
