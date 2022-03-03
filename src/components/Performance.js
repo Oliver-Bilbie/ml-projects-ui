@@ -1,9 +1,9 @@
 import React from "react";
-import { Box, Heading, Text, DataTable } from "grommet";
+import { Box, Heading, Text, Markdown, DataTable } from "grommet";
 
 import { PerformanceData } from "../constants/PerformanceData";
 
-const Performance = ({ modelNumber }) => {
+const Performance = ({ modelNumber, narrowMode }) => {
   return (
     <Box pad="medium">
       <Box
@@ -13,18 +13,35 @@ const Performance = ({ modelNumber }) => {
         pad="medium"
         background="background-front"
         round="small"
+        overflow="auto"
       >
         <Heading size="xsmall">Performance Metrics</Heading>
-        <Box>
-          <DataTable
-            columns={PerformanceData[modelNumber - 1].metrics.columns}
-            data={PerformanceData[modelNumber - 1].metrics.data}
-          />
+        <Box direction="row">
+          {narrowMode ? (
+            <Box direction="column">
+              <DataTable
+                columns={PerformanceData[modelNumber - 1].metrics.columns.slice(0, -2)}
+                data={PerformanceData[modelNumber - 1].metrics.data}
+              />
+              <DataTable
+                columns={PerformanceData[modelNumber - 1].metrics.columns.slice(-2)}
+                data={PerformanceData[modelNumber - 1].metrics.data}
+                primaryKey={false}
+              />
+            </Box>
+          ) : (
+            <DataTable
+              columns={PerformanceData[modelNumber - 1].metrics.columns}
+              data={PerformanceData[modelNumber - 1].metrics.data}
+            />
+        )}
         </Box>
         <Heading size="xsmall">Confusion Matrix</Heading>
-        <Text>True Value</Text>
-        <Box direction="row">
-          <Box direction="row">
+        {!narrowMode && <Text>True Value</Text>}
+        <Box direction={narrowMode ? "column" : "row"}>
+          {narrowMode ? 
+            <Markdown align="center">Key: True Value - **Predicted Value**</Markdown> 
+          :
             <Text
               alignSelf="center"
               margin="none"
@@ -32,7 +49,7 @@ const Performance = ({ modelNumber }) => {
             >
               Predicted Value
             </Text>
-          </Box>
+          }
           <DataTable
             columns={PerformanceData[modelNumber - 1].confusion_matrix.columns}
             data={PerformanceData[modelNumber - 1].confusion_matrix.data}

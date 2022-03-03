@@ -88,6 +88,7 @@ const About = ({ modelNumber }) => {
         pad="medium"
         background="background-front"
         round="small"
+        overflow="auto"
       >
         <Markdown>{AboutData[modelNumber]}</Markdown>
       </Box>

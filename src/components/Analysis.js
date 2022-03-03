@@ -67,6 +67,7 @@ const Analysis = ({ modelNumber }) => {
         pad="medium"
         background="background-front"
         round="small"
+        overflow="auto"
       >
         <Markdown>{AnalysisData[modelNumber]}</Markdown>
       </Box>
