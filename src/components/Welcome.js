@@ -38,7 +38,7 @@ along with the source code for this webpage.
 const Welcome = ({setShowWelcome}) => {
     return(
         <Layer>
-            <Box pad="medium" align="center">
+            <Box pad="medium" align="center" flex overflow="auto">
                 <Heading>Welcome!</Heading>
                 <Text>
                     {body1}
