@@ -3,7 +3,7 @@ import { Box, Layer, Text, Markdown, Heading, Anchor, Button } from "grommet";
 
 
 const body1 = `
-This project is an exploration of a dataset which contains all possible combinations Xs, Os, and blank spaces on a tic tac toe grid along with the outcome of the game (for example, X wins).
+This project is an exploration of a dataset which contains all possible combinations of Xs, Os, and blank spaces on a tic tac toe grid along with the outcome of the game (for example, X wins).
 The inspiration for this idea came from
 `
 

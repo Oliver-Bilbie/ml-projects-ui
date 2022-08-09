@@ -1,17 +1,22 @@
 import React from "react";
 import { Header, Heading, Box, Anchor, Nav } from "grommet";
-import { Github, Linkedin } from "grommet-icons";
+import { Github, Linkedin, MailOption } from "grommet-icons";
 
 const navBarItems = [
   {
+    key: "email",
+    icon: <MailOption color="text-strong" />,
+    url: "mailto:oliverbilbie@tuta.io",
+  },
+  {
     key: "github",
     icon: <Github color="text-strong" />,
-    href: "https://github.com/Oliver-Bilbie",
+    url: "https://github.com/Oliver-Bilbie",
   },
   {
     key: "linkedin",
     icon: <Linkedin color="text-strong" />,
-    href: "https://www.linkedin.com/in/oliver-bilbie/",
+    url: "https://www.linkedin.com/in/oliver-bilbie/",
   },
 ];
 
@@ -32,7 +37,7 @@ const Banner = () => {
       </Box>
       <Nav direction="row" pad="medium" color="text-strong">
         {navBarItems.map((item) => (
-          <Anchor key={item.key} icon={item.icon} href={item.href} />
+          <Anchor key={item.key} icon={item.icon} onClick={() => {window.open(item.url, "_blank")}} />
         ))}
       </Nav>
     </Header>

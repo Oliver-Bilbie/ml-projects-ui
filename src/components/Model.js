@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Heading, Button, Spinner, Layer } from "grommet";
+import { Box, Text, Button, Spinner, Layer } from "grommet";
 import GameBoard from "./GameBoard";
 
 const Model = ({ modelNumber }) => {
@@ -31,52 +31,59 @@ const Model = ({ modelNumber }) => {
   };
 
   const handleSubmit = () => {
-    setLoading(true);
-    let request = new XMLHttpRequest();
-    const path = process.env.REACT_APP_ENDPOINT;
-    const args =
-      boardState.tl +
-      boardState.tm +
-      boardState.tr +
-      boardState.ml +
-      boardState.mm +
-      boardState.mr +
-      boardState.bl +
-      boardState.bm +
-      boardState.br +
-      "/" +
-      modelNumber;
+    // ****************************************************
+    // *      Suspended for now to save on AWS costs      *
+    // ****************************************************
 
-    request.onerror = function () {
-      setResponse("An error has occurred");
-      setLoading(false);
-      setShowResponse(true);
-    };
-    request.ontimeout = function () {
-      setResponse("The request has timed out");
-      setLoading(false);
-      setShowResponse(true);
-    };
-    request.onload = function () {
-      if (request.status === 200) {
-        if (request.response.status === 200) {
-          setResponse("The winner is: " + request.response.message);
-          setShowResponse(true);
-        } else {
-          setResponse("An error has occurred");
-          setShowResponse(true);
-        }
-      } else {
-        setResponse("An error has occurred");
-        setShowResponse(true);
-      }
-      setLoading(false);
-    };
+    // setLoading(true);
+    // let request = new XMLHttpRequest();
+    // const path = process.env.REACT_APP_ENDPOINT;
+    // const args =
+    //   boardState.tl +
+    //   boardState.tm +
+    //   boardState.tr +
+    //   boardState.ml +
+    //   boardState.mm +
+    //   boardState.mr +
+    //   boardState.bl +
+    //   boardState.bm +
+    //   boardState.br +
+    //   "/" +
+    //   modelNumber;
 
-    request.timeout = 10000;
-    request.responseType = "json";
-    request.open("GET", path + args);
-    request.send();
+    // request.onerror = function () {
+    //   setResponse("An error has occurred");
+    //   setLoading(false);
+    //   setShowResponse(true);
+    // };
+    // request.ontimeout = function () {
+    //   setResponse("The request has timed out");
+    //   setLoading(false);
+    //   setShowResponse(true);
+    // };
+    // request.onload = function () {
+    //   if (request.status === 200) {
+    //     if (request.response.status === 200) {
+    //       setResponse("The winner is: " + request.response.message);
+    //       setShowResponse(true);
+    //     } else {
+    //       setResponse("An error has occurred");
+    //       setShowResponse(true);
+    //     }
+    //   } else {
+    //     setResponse("An error has occurred");
+    //     setShowResponse(true);
+    //   }
+    //   setLoading(false);
+    // };
+
+    // request.timeout = 10000;
+    // request.responseType = "json";
+    // request.open("GET", path + args);
+    // request.send();
+
+    setResponse("API calls are currently suspended to save on AWS costs. Please contact me if you wish to see the model in action.");
+    setShowResponse(true);
   };
 
   return (
@@ -105,8 +112,10 @@ const Model = ({ modelNumber }) => {
           onEsc={() => setShowResponse(false)}
           onClickOutside={() => setShowResponse(false)}
         >
-          <Box width="medium" height="250px" pad="small">
-            <Heading>{response}</Heading>
+          {/* <Box width="medium" height="250px" pad="small"> */}
+            {/* <Heading>{response}</Heading> */}
+          <Box width="medium" height="160px" pad="small" gap="medium">
+            <Text>{response}</Text>
             <Box width="xsmall">
               <Button label="Close" onClick={() => setShowResponse(false)} />
             </Box>
